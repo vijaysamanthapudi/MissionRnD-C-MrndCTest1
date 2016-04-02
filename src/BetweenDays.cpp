@@ -22,7 +22,7 @@ Difficulty : Hard
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-
+void convdate(struct node *date1head, int[], int n);
 struct node{
 	int data;
 	struct node *next;
@@ -30,5 +30,33 @@ struct node{
 
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	if (date1head == NULL || date2head == NULL)
+	{
+		return 0;
+	}
+	int d1[3] = { 0 }, d2[3] = { 0 };
+	convdate(date1head, d1, 3);
+	convdate(date2head, d2, 3);
+
+
 }
+
+void convdate(struct node *str, int d[], int n)
+{
+	int i = 0, j = 0;
+	while (str->next)
+	{
+		if (i % 2 == 0)
+		{
+			d[j] = +str->data * 10;
+		}
+		if (i % 2 == 0 && i <= 4)
+		{
+			j++;
+		}
+		i++;
+	}
+
+
+}
+
