@@ -35,37 +35,37 @@ struct node{
 int merge_circularlists(struct node **head1, struct node **head2)
 {
 	if (*head1 == NULL || *head2 == NULL)
+	{
 		return -1;
-	struct node *temp1;
-	temp1 = *head1;
-	struct node *temp2;
-	int t;
-	int len = 0;
-	while (temp1->next != *head1)
+	}
+		
+	struct node *t1 = *head1, *t2;
+	int len = 0,temp;
+	while (t1->next != *head1)
 	{
 		len++;
-		temp1 = temp1->next;
+		t1 = t1->next;
 	}
 	len = len + 1;
-	temp1->next = *head2;
-	temp2 = *head2;
-	while (temp2->next != *head2)
+	t1->next = *head2;
+	t2 = *head2;
+	while (t2->next != *head2)
 	{
 		len++;
-		temp2 = temp2->next;
+		t2 = t2->next;
 	}
 	len = len + 1;
-	temp2->next = *head1;
-	temp1 = *head1;
-	for (temp1; temp1->next != *head1; temp1 = temp1->next)
+	t2->next = *head1;
+	t1 = *head1;
+	for (t1; t1->next != *head1; t1 = t1->next)
 	{
-		for (temp2 = temp1->next; temp2->next != *head1; temp2 = temp2->next)
+		for (t2 = t1->next; t2->next != *head1; t2 = t2->next)
 		{
-			if (temp1->data > temp2->data)
+			if (t1->data > t2->data)
 			{
-				t = temp1->data;
-				temp1->data = temp2->data;
-				temp2->data = t;
+				temp = t1->data;
+				t1->data = t2->data;
+				t2->data = temp;
 			}
 		}
 	}
