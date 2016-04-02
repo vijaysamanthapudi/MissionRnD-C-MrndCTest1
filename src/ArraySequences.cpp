@@ -38,11 +38,7 @@ int * find_sequences(int *arr, int len){
 		return NULL;
 	}
 
-	for (int i = 0; i < len; i++)
-	{
-
-	}
-	return NULL;
+	
 
 
 }
